@@ -1,28 +1,40 @@
 {
-  "name": "blog-app-challenge-starter-files",
+  "name": "knock",
   "version": "0.0.1",
-  "description": "Shopping list app to demo 'the modern classic'",
+  "description": "A youth-mentor career app",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "mocha"
   },
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.12.4",
+    "babel-polyfill": "^6.23.0",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
     "mongoose": "^4.7.1",
-    "morgan": "^1.7.0"
+    "morgan": "^1.8.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
   },
   "keywords": [
     "node",
     "hyperdev",
     "express"
   ],
-  "license": "MIT",
+  "author": "taypsl <taylorparsell@gmail.com>",
+  "license": "UNLICENSED",
   "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-latest": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "faker": "^3.1.0",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "webpack": "^2.3.2"
   }
 }
