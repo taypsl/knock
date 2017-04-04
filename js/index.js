@@ -12,10 +12,11 @@ import Volunteers from './components/volunteers';
 
 const routes = (
 	<Router history={hashHistory}>
-		<Route path="/" component={Layout} />
-		<Route path=":participate" component={YouthSurvey} />
-		<Route path=":volunteer" component={VolunteerSurvey} />
-		<Route path=":our-volunteers" component={Volunteers} />
+		<Route path="/" component={Layout}>
+			<Route path=":participate" component={YouthSurvey} />
+			<Route path=":volunteer" component={VolunteerSurvey} />
+			<Route path=":our-volunteers" component={Volunteers} />
+		</Route>
 	</Router>
 )
 

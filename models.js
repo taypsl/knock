@@ -1,30 +1,41 @@
 const mongoose = require('mongoose');
 
 const UserSchema = mongoose.Schema({
-  author: {
+  user: {
     firstName: String,
     lastName: String
   },
-  title: {type: String, required: true},
-  content: {type: String},
-  created: {type: Date, default: Date.now}
+  mentor: true,
+  phone: {type: String, required: true},
+  email: {type: String, required: true},
+  background: String,
+  preferences: String,
+  website: String,
+  title: String,
+  education: String,
+  children: String,
+  ethnicity: String,
+  dems: String
 });
 
 
-UserSchema.virtual('authorName').get(function() {
-  return `${this.author.firstName} ${this.author.lastName}`.trim();
+UserSchema.virtual('userName').get(function() {
+  return `${this.user.firstName} ${this.user.lastName}`.trim();
 });
 
 UserSchema.methods.apiRepr = function() {
   return {
     id: this._id,
-    author: this.authorName,
-    content: this.content,
+    user: this.userName,
+    background: this.background,
     title: this.title,
-    created: this.created
+    website: this.website
   };
 }
 
 const User = mongoose.model('User', UserSchema);
 
 module.exports = {User};
+
+// update models to fit survey data
+// update apirepr to return data that I want on the participant page
