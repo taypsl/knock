@@ -18,7 +18,7 @@
   "background": "This is my background story. I work at Here and I went to school There.",
   "interests": "I would like to mentor kids who are first-generation prospective college students.",
   "website": "https://google.com",
-  "title": "Sr. Web Developer"
+  "title": "Doctor"
 }
 {"user": {
     "firstName": "Hermione",
@@ -29,7 +29,7 @@
   "background": "This is my background story. I work at Here and I went to school There.",
   "interests": "I would like to mentor kids who are first-generation prospective college students.",
   "website": "https://google.com",
-  "title": "Sr. Web Developer"
+  "title": "Lawyer"
 }
 {"user": {
     "firstName": "Percy",
@@ -40,7 +40,7 @@
   "background": "This is my background story. I work at Here and I went to school There.",
   "interests": "I would like to mentor kids who are first-generation prospective college students.",
   "website": "https://google.com",
-  "title": "Sr. Web Developer"
+  "title": "Teacher"
 }
 {"user": {
     "firstName": "Deadelus",
@@ -51,7 +51,7 @@
   "background": "This is my background story. I work at Here and I went to school There.",
   "interests": "I would like to mentor kids who are first-generation prospective college students.",
   "website": "https://google.com",
-  "title": "Sr. Web Developer"
+  "title": "Painter"
 }
 {"user": {
     "firstName": "Penelope",
@@ -62,5 +62,5 @@
   "background": "This is my background story. I work at Here and I went to school There.",
   "interests": "I would like to mentor kids who are first-generation prospective college students.",
   "website": "https://google.com",
-  "title": "Sr. Web Developer"
+  "title": "Museum Curator"
 }

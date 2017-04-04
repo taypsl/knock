@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HowItWorks from '/get-answers';
+import HowItWorks from '/how-it-works';
 import Navbar from '/navbar';
 import GetInvolved from '/get-involved';
 
@@ -13,9 +13,9 @@ export class Layout extends React.Component {
 		return (
 			<div className="container"> //or something
 				<Navbar />
-				<HowItWorks /> // check against index.html 
-				<MeetVolunteers /> //^ same
-				<GetInvolved /> //^ same
+				<HowItWorks /> 
+				<MeetVolunteers /> 
+				<GetInvolved /> 
 			</div>
 		)
 	}

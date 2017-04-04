@@ -5,8 +5,8 @@ import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 
 import Layout from './components/layout';
-// make these components-->
 import YouthSurvey from './components/youth-survey';
+// make these components-->
 import VolunteerSurvey from './components/volunteer-survey';
 import Volunteers from './components/volunteers';
 

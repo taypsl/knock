@@ -5,17 +5,17 @@ const UserSchema = mongoose.Schema({
     firstName: String,
     lastName: String
   },
-  mentor: true,
+  mentor: false,
   phone: {type: String, required: true},
   email: {type: String, required: true},
   background: String,
   preferences: String,
-  website: String,
-  title: String,
   education: String,
   children: String,
   ethnicity: String,
-  dems: String
+  dems: String,
+  title: String,
+  website: String
 });
 
 
