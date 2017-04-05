@@ -14,7 +14,8 @@ export default class YouthSurvey extends React.Component {
     		ethnicity: '',
     		dems: '',
     		background: '',
-    		preferences: ''
+    		preferences: '',
+    		mentor: false
     	},
     	this.onAddInputChanged = this.onAddInputChanged.bind(this),
     	this.onAddSubmit = this.onAddSubmit.bind(this)

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export class GetInvolved extends React.component {
+export class GetInvolved extends React.Component {
 	render() {
 		return (
 			<div className="get-involved" id="link3">
