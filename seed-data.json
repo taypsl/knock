@@ -1,66 +1,55 @@
-{"user": {
-    "firstName": "Amy",
-    "lastName": "Worth"
-  },
+{"username": "Amy Smith",
   "phone": "(805) 805-8888",
   "email": "fake@email.com",
   "background": "This is my background story. I work at Here and I went to school There.",
   "interests": "I would like to mentor kids who are first-generation prospective college students.",
   "website": "https://google.com",
-  "title": "Sr. Web Developer"
-}
-{"user": {
-    "firstName": "Stan",
-    "lastName": "Shunpike"
-  },
+  "title": "Sr. Web Developer",
+  "mentor": "true"
+},
+{"username": "Stan Shunpike",
   "phone": "(805) 805-8888",
   "email": "fake@email.com",
   "background": "This is my background story. I work at Here and I went to school There.",
   "interests": "I would like to mentor kids who are first-generation prospective college students.",
   "website": "https://google.com",
-  "title": "Doctor"
-}
-{"user": {
-    "firstName": "Hermione",
-    "lastName": "Granger"
-  },
+  "title": "Doctor",
+  "mentor": "true"
+},
+{"username": "Hermione Granger",
   "phone": "(805) 805-8888",
   "email": "fake@email.com",
   "background": "This is my background story. I work at Here and I went to school There.",
   "interests": "I would like to mentor kids who are first-generation prospective college students.",
   "website": "https://google.com",
-  "title": "Lawyer"
-}
-{"user": {
-    "firstName": "Percy",
-    "lastName": "Weasley"
-  },
+  "title": "Lawyer",
+  "mentor": "true"
+},
+{"username": "Percy Weasley",
   "phone": "(805) 805-8888",
   "email": "fake@email.com",
   "background": "This is my background story. I work at Here and I went to school There.",
   "interests": "I would like to mentor kids who are first-generation prospective college students.",
   "website": "https://google.com",
-  "title": "Teacher"
-}
-{"user": {
-    "firstName": "Deadelus",
-    "lastName": "Diggle"
-  },
+  "title": "Teacher",
+  "mentor": "true"
+},
+{"username": "Deadelus Diggle",
   "phone": "(805) 805-8888",
   "email": "fake@email.com",
   "background": "This is my background story. I work at Here and I went to school There.",
   "interests": "I would like to mentor kids who are first-generation prospective college students.",
   "website": "https://google.com",
-  "title": "Painter"
-}
-{"user": {
-    "firstName": "Penelope",
-    "lastName": "Clearwater"
-  },
+  "title": "",
+  "mentor": "false"
+
+},
+{"username": "Penelope Clearwater",
   "phone": "(805) 805-8888",
   "email": "fake@email.com",
   "background": "This is my background story. I work at Here and I went to school There.",
   "interests": "I would like to mentor kids who are first-generation prospective college students.",
   "website": "https://google.com",
-  "title": "Museum Curator"
+  "title": "",
+  "mentor": "false"
 }
