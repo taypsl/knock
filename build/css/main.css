@@ -1,0 +1,119 @@
+.header {
+	background: #000000;
+	width: 100%;
+	height: 50px;
+	z-index: 10;
+	position: fixed;
+	font: "Mukta Vaani", sans-serif;
+	color: #ffffff; 
+}
+.header h1, .header nav {
+	display: inline-block; 
+}
+
+.brand {
+	font-size: 1.1em;
+	font-weight: 500;
+	letter-spacing: 2px;
+	margin: 15px 0 0 20px;
+	color: #ffffff; 
+}
+.brand:hover {
+	color: #2194F4; 
+}
+
+nav {
+	right: 0;
+	position: absolute;
+	margin: 18px 30px 0 30px; 
+}
+
+/* ====== link styles ====== */
+a {
+transformext-decoration: none; 
+}
+
+.links {
+	color: #ffffff;
+	font-size: 1em;
+	font-weight: 200;
+	letter-spacing: 1px;
+	margin-left: 10px; 
+}
+
+.links:hover {
+	color: #2194F4; 
+}
+
+/* ====== section styles ====== */
+section {
+	padding: 5% 15% 5%;
+	z-index: -10;
+}
+
+section.get-answers {
+	background-color: white;
+	height: 400px;
+}
+
+section.meet-volunteers {
+background-color: gainsboro;
+height: 400px;
+
+}
+
+section.volunteer {
+background-color: white;
+height: 400px;
+
+}
+
+/* ====== volunteer profile styles ====== */
+div.profile {
+	margin: 20px 10px 40px 10px;
+}
+
+div.image {
+	border-radius: 50%;
+	background-color: grey;
+	height: 100px;
+	width: 100px;
+}
+
+h4.name {
+	background-color: grey;
+	width: 120px;
+	height: 25px;
+	margin: 10px 0 10px 0;
+}
+
+p.description {
+	background-color: grey;
+	width: 200px;
+	height: 150px;
+	margin: 15px 0 20px 0;
+}
+
+/* ====== footer ====== */
+footer {
+	background: #ffffff;
+	text-align: center;
+	color: #000000;
+	width: 100%;
+	height: 50px;
+	font: "Mukta Vaani", sans-serif;
+	font-family: "Mukta Vaani", sans-serif;
+	font-size: 1em;
+	font-weight: 200; 
+}
+footer a {
+	color: #000000;
+	margin: 25px; 
+}
+
+.copyright {
+	font-size: 1em;
+	color: #a1a1a1;
+	margin-bottom: 30px; 
+}
+

@@ -1,8 +1,9 @@
 import React from 'react';
 
-import HowItWorks from '/how-it-works';
-import Navbar from '/navbar';
-import GetInvolved from '/get-involved';
+import HowItWorks from './how-it-works';
+import Navbar from './navbar';
+import GetInvolved from './get-involved';
+import Volunteers from './meet-volunteers'
 
 // import any actions, if needed
 // connect react-redux, if needed
@@ -21,3 +22,5 @@ export class Layout extends React.Component {
 	}
 }
 
+
+				
