@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 // may need to import hashLink===>
 // npm install --save react-router-hash-link and import {HashLink as Link} from react-router-hash-link
 
-export class Navbar extends React.Component {
+export default class Navbar extends React.Component {
 	render() {
 		return (
 			<div className="header">

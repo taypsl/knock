@@ -9,15 +9,23 @@ import YouthSurvey from './components/youth-survey';
 import VolunteerSurvey from './components/volunteer-survey';
 import Volunteers from './components/volunteers';
 
-const routes = (
-  <Router history={hashHistory}>
-    <Route path="/" component={Layout} >
-      <Route path="/participate" component={YouthSurvey} />
+class App extends React.Component {
+  render() {
+    return (
+    	<Router history={hashHistory}>
+        <Route path="/" component={Layout}>
+         <Route path="/participate" component={YouthSurvey} />
 
-    </Route>
-  </Router>
-)
+        </Route>
+      </Router>
+   
+    )
+  }
+}
 
+/*
+ 
+      */
 //          <Route path=":volunteer" component={VolunteerSurvey} />
 //          <Route path=":our-volunteers" component={Volunteers} />
 
@@ -26,7 +34,7 @@ const Home = () => <h1>Hello from Home!</h1>
 
 
 document.addEventListener('DOMContentLoaded', () =>
-	ReactDOM.render(routes, document.getElementById('app'))
+     ReactDOM.render(  <App>asd</App>, document.getElementById('app'))
 );
 
 // layout should render

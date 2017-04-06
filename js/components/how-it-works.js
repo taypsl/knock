@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export class HowItWorks extends React.Component {
+export default class HowItWorks extends React.Component {
 	render() {
 		return (
 			<div className="how-it-works" id="link1">
