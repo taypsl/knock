@@ -29,8 +29,9 @@ nav {
 }
 
 /* ====== link styles ====== */
-a {
-transformext-decoration: none; 
+a, li {
+	text-decoration: none; 
+	list-style: none;
 }
 
 .links {
@@ -51,18 +52,18 @@ section {
 	z-index: -10;
 }
 
-section.get-answers {
+div.how-it-works {
 	background-color: white;
 	height: 400px;
 }
 
-section.meet-volunteers {
+div.volunteers {
 background-color: gainsboro;
 height: 400px;
 
 }
 
-section.volunteer {
+div.get-involved {
 background-color: white;
 height: 400px;
 

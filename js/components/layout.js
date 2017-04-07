@@ -12,11 +12,11 @@ export default class Layout extends React.Component {
 	// dispatch any actions
 	render() {
 		return (
-			<div className="container">
-			<Navbar />
-			<HowItWorks />
-			<Volunteers limit={2}/>
-			<GetInvolved />
+			<div>
+				<Navbar />
+				<HowItWorks />
+				<Volunteers limit={2}/>
+				<GetInvolved />
 			</div>
 			)
 	}

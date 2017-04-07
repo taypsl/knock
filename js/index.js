@@ -14,8 +14,9 @@ class App extends React.Component {
     return (
     	<Router history={hashHistory}>
         <Route path="/" component={Layout}>
-         <Route path="/participate" component={YouthSurvey} />
-
+        	<Route path="/participate" component={YouthSurvey} />
+			<Route path=":volunteer" component={VolunteerSurvey} />
+          	<Route path=":our-volunteers" component={Volunteers} />
         </Route>
       </Router>
    
@@ -29,7 +30,6 @@ class App extends React.Component {
 //          <Route path=":volunteer" component={VolunteerSurvey} />
 //          <Route path=":our-volunteers" component={Volunteers} />
 
-const Home = () => <h1>Hello from Home!</h1>
 // class App extends React.Component {  render() { return () } }
 
 

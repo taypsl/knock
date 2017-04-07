@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
+import {HashLink as Link} from react-router-hash-link
+
 // may need to import hashLink===>
 // npm install --save react-router-hash-link and import {HashLink as Link} from react-router-hash-link
 
