@@ -13,7 +13,7 @@ export default class Volunteers extends React.Component {
 
 	static defaultProps() {
 	    return {
-	      limit: 4
+	      limit: 5
 	    }
 	}
 
@@ -39,9 +39,10 @@ export default class Volunteers extends React.Component {
 		})
 		.map(function(volunteer) {
 			return (
-				<div className="user-profile">
-					<h4><a href="{volunteer.website}">{volunteer.username}</a></h4>
+				<div className="user-profile"  key={volunteer.id}>
+					<h4><Link to="{volunteer.website}">{volunteer.username}</Link></h4>
 					<p>{volunteer.title}</p>
+					<p>{volunteer.background}</p>
 					<br />
 				</div>
 			)
@@ -50,8 +51,8 @@ export default class Volunteers extends React.Component {
 				<div className="volunteers" id="link2">
 					<section>
 						<h2>MEET OUR VOLUNTEERS</h2>
-						<b>{volunteers}<br /></b>
-						<div className="survey-link"><Link to={'/our-volunteers'}>View More</Link></div>
+						{volunteers}
+						<div className="survey-link"><Link to={"/our-volunteers"}>View More</Link></div>
 					</section>
 				</div>
 		)	

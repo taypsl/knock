@@ -15,22 +15,14 @@ class App extends React.Component {
     	<Router history={hashHistory}>
         <Route path="/" component={Layout}>
         	<Route path="/participate" component={YouthSurvey} />
-			<Route path=":volunteer" component={VolunteerSurvey} />
-          	<Route path=":our-volunteers" component={Volunteers} />
+			<Route path="/volunteer" component={VolunteerSurvey} />
+          	<Route path="/our-volunteers" component={Volunteers} />
         </Route>
       </Router>
    
     )
   }
 }
-
-/*
- 
-      */
-//          <Route path=":volunteer" component={VolunteerSurvey} />
-//          <Route path=":our-volunteers" component={Volunteers} />
-
-// class App extends React.Component {  render() { return () } }
 
 
 document.addEventListener('DOMContentLoaded', () =>
