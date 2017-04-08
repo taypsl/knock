@@ -4,19 +4,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'
 import Layout from './components/layout';
-import YouthSurvey from './components/youth-survey';
+import Home from './components/home';
 // make these components-->
 import VolunteerSurvey from './components/volunteer-survey';
 import Volunteers from './components/volunteers';
+import YouthSurvey from './components/youth-survey';
+
 
 class App extends React.Component {
   render() {
     return (
     	<Router history={hashHistory}>
         <Route path="/" component={Layout}>
-        	<Route path="/participate" component={YouthSurvey} />
-			<Route path="/volunteer" component={VolunteerSurvey} />
-          	<Route path="/our-volunteers" component={Volunteers} />
+        	<IndexRoute component={Home} />
         </Route>
       </Router>
    
@@ -41,3 +41,7 @@ document.addEventListener('DOMContentLoaded', () =>
 		// button on click renders all volunteer cards page
 
 // participation buttons should render survey page
+/*
+<Route path="/participate" component={YouthSurvey} />
+			<Route path="/volunteer" component={VolunteerSurvey} />
+          	<Route path="/our-volunteers" component={Volunteers} /> */

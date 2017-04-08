@@ -30,6 +30,18 @@ video.fill {
 	width: 0;
 }
 
+@media (max-width: 1050px) {
+	.knock-icon {
+		top: 500px;
+	}
+}
+
+@media (max-width: 850px) {
+	.knock-icon {
+		top: 80px;
+	}
+}
+
 /* ====== header ====== */
 .header {
 	background: #272F30;
