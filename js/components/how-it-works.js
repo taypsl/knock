@@ -41,7 +41,7 @@ export default class HowItWorks extends React.Component {
 						</div>
 					</div>
 
-					<Link to={'/participate'}><div className="btn-main">get started</div></Link>
+					<Link to={'/participate'} className="btn-style"><div className="btn-main">get started</div></Link>
 				</section>
 				<div className="grey-bar"></div>
 			</div>

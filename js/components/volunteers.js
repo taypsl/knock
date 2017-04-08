@@ -13,7 +13,7 @@ export default class Volunteers extends React.Component {
 
 	static defaultProps() {
 	    return {
-	      limit: 5
+	      limit: 4
 	    }
 	}
 
@@ -39,25 +39,36 @@ export default class Volunteers extends React.Component {
 		})
 		.map(function(volunteer) {
 			return (
-				<div className="user-profile"  key={volunteer.id}>
-					<h4><Link to="{volunteer.website}">{volunteer.username}</Link></h4>
-					<p>{volunteer.title}</p>
-					<p>{volunteer.background}</p>
-					<br />
+				<div className="profile"  key={volunteer.id}>
+					<h4 className="name"><Link to="{volunteer.website}">{volunteer.username}</Link></h4>
+					<p className="title">{volunteer.title}</p>
+					<p className="background">{volunteer.background}</p>
 				</div>
 			)
 		})
 		return (
 				<div className="volunteers" id="link2">
 					<section>
-						<h2>MEET OUR VOLUNTEERS</h2>
-						{volunteers}
-						<div className="survey-link"><Link to={"/our-volunteers"}>View More</Link></div>
+						<h2 className="section-header">meet our volunteers</h2>
+						<p>Learn about real careers from real people.</p>
+						<div className="profile-container">
+							{volunteers}
+						</div>
+						<Link to={"/our-volunteers"} className="btn-style"><div className="btn-main">view more</div></Link>
 					</section>
+					<div className="grey-bar"></div>
 				</div>
 		)	
 	}
 }
+
+
+
+
+
+
+
+
 
 // actually only want the section/div stuff to happen on main page, not on full volunteer page. will need to work out. 
 

@@ -2,6 +2,7 @@ import React from 'react';
 
 import HowItWorks from './how-it-works';
 import Navbar from './navbar';
+import Hero from './hero'
 import GetInvolved from './get-involved';
 import Volunteers from './volunteers';
 
@@ -14,6 +15,7 @@ export default class Layout extends React.Component {
 		return (
 			<div>
 				<Navbar />
+				<Hero />
 				<HowItWorks />
 				<Volunteers limit={2}/>
 				<GetInvolved />
