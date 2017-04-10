@@ -17,6 +17,9 @@ class App extends React.Component {
     	<Router history={hashHistory}>
         <Route path="/" component={Layout}>
         	<IndexRoute component={Home} />
+        	<Route path="our-volunteers" component={Volunteers} />
+        	<Route path="volunteer" component={VolunteerSurvey} />
+        	<Route path="participate" component={YouthSurvey} />
         </Route>
       </Router>
    

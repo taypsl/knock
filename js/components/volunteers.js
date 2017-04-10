@@ -31,6 +31,9 @@ export default class Volunteers extends React.Component {
 	render() {
 		var self=this;
 		var volunteers = this.state.volunteers
+		.filter(function(user){
+			return user.mentor
+		})
 		.filter(function(volunteer, index){
 			if(self.props.limit) {
 				return (index < self.props.limit)
@@ -40,7 +43,7 @@ export default class Volunteers extends React.Component {
 		.map(function(volunteer) {
 			return (
 				<div className="profile"  key={volunteer.id}>
-					<h4 className="name"><Link to="{volunteer.website}">{volunteer.username}</Link></h4>
+					<h4 className="name"><a href={volunteer.website}>{volunteer.username}</a></h4>
 					<p className="title">{volunteer.title}</p>
 					<p className="background">{volunteer.background}</p>
 				</div>
