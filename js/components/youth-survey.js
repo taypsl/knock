@@ -5,11 +5,11 @@ export default class YouthSurvey extends React.Component {
 	constructor(props) {
     	super(props);
     	this.state = {
-    		name: 'HELLOO',
+    		name: '',
     		email: '',
     		phone: '',
     		// how do I handle multiple drop downs? value=1, not value="this.state.name"
-    		education: '',
+    		//education: '',
     		weekendTime: '',
     		weekdayTime: '',
     		children: '',
@@ -17,10 +17,20 @@ export default class YouthSurvey extends React.Component {
     		dems: '',
     		background: '',
     		preferences: '',
-    		mentor: false
+    		mentor: false,
+    		education: [
+                { id: 1, name: 'Some high school', selected: false },
+                { id: 2, name: 'High school degree', selected: false },
+                { id: 3, name: 'GED', selected: false },
+                { id: 4, name: 'Some college', selected: false },
+                { id: 5, name: 'College degree', selected: false },
+                { id: 6, name: 'Advanced degree', selected: false },
+                { id: 7, name: 'Other', selected: false }
+            ]
+
     	}
     	this.onAddInputChanged = this.onAddInputChanged.bind(this)
-    	//this.onAddSubmit = this.onAddSubmit.bind(this)
+    	this.handleFormSubmit = this.handleFormSubmit.bind(this)
     }
 
     onAddInputChanged(event) {
@@ -29,7 +39,62 @@ export default class YouthSurvey extends React.Component {
     	this.setState(obj)
     }
 
+    handleFormSubmit(event) {
+    	event.preventDefault();
+    	fetch('https://important-scraper.glitch.me/users', {  
+		  method: 'POST',
+		  headers: {
+		    'Accept': 'application/json',
+		    'Content-Type': 'application/json',
+		  },
+		  body: JSON.stringify({
+		    name: this.state.name,
+		    email: this.state.email,
+    		phone: this.state.phone,
+    		education: this.state.education,
+    		weekendTime: this.state.weekendTime,
+    		weekdayTime: this.state.weekdayTime,
+    		children: this.state.children,
+    		ethnicity: this.state.ethnicity,
+    		dems: this.state.dems,
+    		background: this.state.background,
+    		preferences: this.state.preferences,
+    		mentor: false
+		  })
+		})
+		.then( res => res.text())
+		.then(data =>{
+			console.log("submit_response", data)
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+    }
+	__changeSelection(id) {
+        var state = this.state.education.map(function(d) {
+            return {
+                id: d.id,
+                name:d.name,
+                selected: (d.id === id ? !d.selected : d.selected)
+            };
+        });
+        console.log("education":state )
+
+        this.setState({ education: state });
+
+    }
 	render() {
+		var educationChecks = this.state.education.map(function(d) {
+            return (
+            	<div className="radio">
+								<label htmlFor="education-0">
+									<input type="checkbox" checked={d.selected} name="education" onChange={this.__changeSelection.bind(this, d.id)} />
+									  {d.name}
+								</label>
+				</div>
+            );
+        }.bind(this));
+
 		return (
 		<div>
 			<section>
@@ -51,54 +116,15 @@ export default class YouthSurvey extends React.Component {
 					<div className="form-group">
 						<label className="col-md-4 control-label" htmlFor="phone">Phone</label>
 						<div className="col-md-5">
-							<input value="this.state.phone" id="phone" name="phone" type="text" placeholder="(123) 456-7890" className="form-control input-md" required="" />
+							<input onChange={this.onAddInputChanged} value={this.state.phone} id="phone" name="phone" type="text" placeholder="(123) 456-7890" className="form-control input-md" required="" />
 						</div>
 					</div>
 					<div className="form-group">
 						<label className="col-md-4 control-label" htmlFor="education">Highest education level</label>
 						<div className="col-md-4">
-							<div className="radio">
-								<label htmlFor="education-0">
-									<input type="radio" name="education" id="education-0" value="1" checked="checked" />
-									Some high school
-								</label>
-							</div>
-							<div className="radio">
-								<label htmlFor="education-1">
-									<input type="radio" name="education" id="education-1" value="2" />
-									High school degree
-								</label>
-							</div>
-							<div className="radio">
-								<label htmlFor="education-2">
-									<input type="radio" name="education" id="education-2" value="3" />
-									GED
-								</label>
-							</div>
-							<div className="radio">
-								<label htmlFor="education-3">
-									<input type="radio" name="education" id="education-3" value="4" />
-									Some college
-								</label>
-							</div>
-							<div className="radio">
-								<label htmlFor="education-4">
-									<input type="radio" name="education" id="education-4" value="5" />
-									College degree
-								</label>
-							</div>
-							<div className="radio">
-								<label htmlFor="education-5">
-									<input type="radio" name="education" id="education-5" value="6" />
-									Advanced degree
-								</label>
-							</div>
-							<div className="radio">
-								<label htmlFor="education-6">
-									<input type="radio" name="education" id="education-6" value="7" />
-									Other
-								</label>
-							</div>
+							{educationChecks}
+							
+		
 						</div>
 					</div>
 					<div className="form-group">
@@ -106,13 +132,13 @@ export default class YouthSurvey extends React.Component {
 						<div className="col-md-4">
 							<div className="radio">
 								<label htmlFor="children-0">
-									<input type="radio" name="children" id="children-0" value="1" checked="checked" />
+									<input onChange={this.onAddInputChanged} value={this.state.children} type="radio" name="children" id="children-0" defaultChecked="checked" />
 									Yes
 								</label>
 							</div>
 							<div className="radio">
 								<label htmlFor="children-1">
-									<input type="radio" name="children" id="children-1" value="2" />
+									<input onChange={this.onAddInputChanged} value={this.state.children} type="radio" name="children" id="children-1" />
 									No
 								</label>
 							</div>
@@ -123,7 +149,7 @@ export default class YouthSurvey extends React.Component {
 						<div className="col-md-4">
 							<div className="radio">
 								<label htmlFor="Ethnicity-0">
-									<input type="radio" name="Ethnicity" id="Ethnicity-0" value="1" checked="checked" />
+									<input type="radio" name="Ethnicity" id="Ethnicity-0" value="1" defaultChecked="checked" />
 									Yes
 								</label>
 							</div>
@@ -173,20 +199,203 @@ export default class YouthSurvey extends React.Component {
 					<div className="form-group">
 						<label className="col-md-4 control-label" htmlFor="background">Tell us about you and your background. This will be shared with your chosen mentor.</label>
 						<div className="col-md-4">
-							<textarea value="this.state.background" className="form-control" id="background" name="background" placeholder="I'm working on graduating from High School..."></textarea>
+							<textarea onChange={this.onAddInputChanged} value={this.state.background} className="form-control" id="background" name="background" placeholder="I'm working on graduating from High School..."></textarea>
 						</div>
 					</div>
 					<div className="form-group">
 						<label className="col-md-4 control-label" htmlFor="preferences">What would you like to talk to someone about?</label>
 						<div className="col-md-4">
-							<textarea value="this.state.preferences" className="form-control" id="preferences" name="preferences" placeholder="Getting into college, working in the field of ___, raising kids while starting a career…" ></textarea>
+							<textarea onChange={this.onAddInputChanged} value={this.state.preferences} className="form-control" id="preferences" name="preferences" placeholder="Getting into college, working in the field of ___, raising kids while starting a career…" ></textarea>
 						</div>
 					</div>
 
 					<div className="form-group">
 					  <label className="col-md-4 control-label" htmlFor="">Select the WEEKEND times you can talk (PST)</label>
 					  <div className="col-md-4">
-					    <select id="weekendTime" name="" className="form-control" multiple="multiple">
+					    <div className="checkbox">
+							<label htmlFor="weekendTime-1">
+								<input type="checkbox" name="race" id="weekendTime-1" value="1" />
+								8am
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekendTime-2">
+								<input type="checkbox" name="race" id="weekendTime-2" value="1" />
+								9am
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekendTime-3">
+								<input type="checkbox" name="race" id="weekendTime-3" value="1" />
+								10am
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekendTime-4">
+								<input type="checkbox" name="race" id="weekendTime-4" value="1" />
+								11am
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekendTime-5">
+								<input type="checkbox" name="race" id="weekendTime-5" value="1" />
+								12pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekendTime-6">
+								<input type="checkbox" name="race" id="weekendTime-6" value="1" />
+								1pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekendTime-7">
+								<input type="checkbox" name="race" id="weekendTime-7" value="1" />
+								2pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekendTime-8">
+								<input type="checkbox" name="race" id="weekendTime-8" value="1" />
+								3pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekendTime-9">
+								<input type="checkbox" name="race" id="weekendTime-9" value="1" />
+								4pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekendTime-10">
+								<input type="checkbox" name="race" id="weekendTime-10" value="1" />
+								5pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekendTime-11">
+								<input type="checkbox" name="race" id="weekendTime-11" value="1" />
+								6pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekendTime-12">
+								<input type="checkbox" name="race" id="weekendTime-12" value="1" />
+								7pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekendTime-13">
+								<input type="checkbox" name="race" id="weekendTime-13" value="1" />
+								8pm
+							</label>
+						</div>
+					  </div>
+					</div>
+
+					<div className="form-group">
+					  <label className="col-md-4 control-label" htmlFor="selectmultiple">Select the WEEKDAY times you can talk (PST)</label>
+					  <div className="col-md-4">
+					    <div className="checkbox">
+							<label htmlFor="weekdayTime-1">
+								<input defaultChecked type="checkbox" name="race" id="weekdayTime-1" value="1" />
+								8am
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekdayTime-2">
+								<input type="checkbox" name="race" id="weekdayTime-2" value="1" />
+								9am
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekdayTime-3">
+								<input type="checkbox" name="race" id="weekdayTime-3" value="1" />
+								10am
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekdayTime-4">
+								<input type="checkbox" name="race" id="weekdayTime-4" value="1" />
+								11am
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekdayTime-5">
+								<input type="checkbox" name="race" id="weekdayTime-5" value="1" />
+								12pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekdayTime-6">
+								<input type="checkbox" name="race" id="weekdayTime-6" value="1" />
+								1pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekdayTime-7">
+								<input type="checkbox" name="race" id="weekdayTime-7" value="1" />
+								2pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekdayTime-8">
+								<input type="checkbox" name="race" id="weekdayTime-8" value="1" />
+								3pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekdayTime-9">
+								<input type="checkbox" name="race" id="weekdayTime-9" value="1" />
+								4pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekdayTime-10">
+								<input type="checkbox" name="race" id="weekdayTime-10" value="1" />
+								5pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekdayTime-11">
+								<input type="checkbox" name="race" id="weekdayTime-11" value="1" />
+								6pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekdayTime-12">
+								<input type="checkbox" name="race" id="weekdayTime-12" value="1" />
+								7pm
+							</label>
+						</div>
+						<div className="checkbox">
+							<label htmlFor="weekdayTime-13">
+								<input type="checkbox" name="race" id="weekdayTime-13" value="1" />
+								8pm
+							</label>
+						</div>
+					  </div>
+					</div>
+
+					<div className="form-group">
+						<label className="col-md-4 control-label" htmlFor="submit"></label>
+						<div className="col-md-4">
+							<button onClick={this.handleFormSubmit} id="submit" name="submit" className="btn btn-primary">Submit</button>
+						</div>
+						</div>
+				</fieldset>
+			</form>
+			</section>
+		</div>
+		)
+	}
+}
+
+
+/*
+						<div className="form-group">
+						
+							<select id="weekendTime" name="" className="form-control" multiple="multiple">
 					      <option value="1">8am</option>
 					      <option value="2">9am</option>
 					      <option value="3">10am</option>
@@ -205,6 +414,8 @@ export default class YouthSurvey extends React.Component {
 					    </select>
 					  </div>
 					</div>
+
+
 
 					<div className="form-group">
 					  <label className="col-md-4 control-label" htmlFor="selectmultiple">Select the WEEKDAY times you can talk (PST)</label>
@@ -229,16 +440,4 @@ export default class YouthSurvey extends React.Component {
 					  </div>
 					</div>
 
-					<div className="form-group">
-						<label className="col-md-4 control-label" htmlFor="submit"></label>
-						<div className="col-md-4">
-							<button id="submit" name="submit" className="btn btn-primary">Submit</button>
-						</div>
-						</div>
-				</fieldset>
-			</form>
-			</section>
-		</div>
-		)
-	}
-}
+*/
