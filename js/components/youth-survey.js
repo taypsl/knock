@@ -14,7 +14,13 @@ export default class YouthSurvey extends React.Component {
     		weekdayTime: '',
     		children: '',
     		ethnicity: '',
-    		dems: '',
+    		dems: [
+                { id: 1, name: 'American Indian or Alaska Native', selected: false },
+                { id: 2, name: 'Asian', selected: false },
+                { id: 3, name: 'Black or African American', selected: false },
+                { id: 4, name: 'Native Hawaiian or Other Pacific Islander', selected: false },
+                { id: 5, name: 'White', selected: false }
+            ],
     		background: '',
     		preferences: '',
     		mentor: false,
@@ -78,19 +84,41 @@ export default class YouthSurvey extends React.Component {
                 selected: (d.id === id ? !d.selected : d.selected)
             };
         });
-        console.log("education":state )
 
-        this.setState({ education: state });
+        var stateDems = this.state.dems.map(function(d) {
+            return {
+                id: d.id,
+                name:d.name,
+                selected: (d.id === id ? !d.selected : d.selected)
+            };
+        });
+        console.log("dems":state )
+
+        this.setState({ 
+        	education: state,
+        	dems: stateDems
+        });
 
     }
 	render() {
 		var educationChecks = this.state.education.map(function(d) {
             return (
             	<div className="radio">
-								<label htmlFor="education-0">
-									<input type="checkbox" checked={d.selected} name="education" onChange={this.__changeSelection.bind(this, d.id)} />
-									  {d.name}
-								</label>
+					<label htmlFor="education-0">
+						<input type="checkbox" checked={d.selected} name="education" onChange={this.__changeSelection.bind(this, d.id)} />
+						  {d.name}
+					</label>
+				</div>
+            );
+        }.bind(this));
+
+		var demsChecks = this.state.dems.map(function(d) {
+            return (
+            	<div className="checkbox">
+					<label htmlFor="race-0">
+						<input checked={d.selected} type="checkbox" name="race" onChange={this.__changeSelection.bind(this, d.id)} />
+						{d.name}
+					</label>
 				</div>
             );
         }.bind(this));
@@ -124,7 +152,6 @@ export default class YouthSurvey extends React.Component {
 						<div className="col-md-4">
 							{educationChecks}
 							
-		
 						</div>
 					</div>
 					<div className="form-group">
@@ -164,36 +191,8 @@ export default class YouthSurvey extends React.Component {
 					<div className="form-group">
 						<label className="col-md-4 control-label" htmlFor="dems">How would you describe yourself? (Check all that apply) </label>
 						<div className="col-md-4">
-							<div className="checkbox">
-								<label htmlFor="race-0">
-									<input type="checkbox" name="race" id="dems-0" value="1" />
-									American Indian or Alaska Native
-								</label>
-							</div>
-							<div className="checkbox">
-								<label htmlFor="race-1">
-									<input type="checkbox" name="race" id="dems-1" value="2" />
-									Asian
-								</label>
-							</div>
-							<div className="checkbox">
-								<label htmlFor="race-2">
-									<input type="checkbox" name="race" id="dems-2" value="3" />
-									Black or African American
-								</label>
-							</div>
-							<div className="checkbox">
-								<label htmlFor="race-3">
-									<input type="checkbox" name="race" id="dems-3" value="4" />
-									Native Hawaiian or Other Pacific Islander
-								</label>
-							</div>
-							<div className="checkbox">
-								<label htmlFor="race-4">
-									<input type="checkbox" name="race" id="dems-4" value="5" />
-									White
-								</label>
-							</div>
+							{demsChecks}
+		
 						</div>
 					</div>
 					<div className="form-group">
