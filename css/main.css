@@ -280,6 +280,13 @@ p.description {
 /* === get involved === */
 
 
+/* === forms === */
+
+.val-error { border: 1px solid red; }
+form {
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
 
 /* ====== footer ====== */
 footer {

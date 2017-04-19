@@ -2,7 +2,7 @@ require('babel-polyfill');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'
+import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router';
 import Layout from './components/layout';
 import Home from './components/home';
 // make these components-->
