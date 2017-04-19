@@ -69,7 +69,21 @@ export default class YouthSurvey extends React.Component {
     	this.setState(obj)
     }
 
+    canBeSubmitted() {
+	  const { name, email, phone, background } = this.state;
+	  return (
+	    name.length > 0 &&
+	    email.length > 0 &&
+	    phone.length > 0 &&
+	    background.length > 0
+	  );
+	}
+
     handleFormSubmit(event) {
+    	if (!this.canBeSubmitted()) {
+		    evt.preventDefault();
+		    return;
+		  }
     	var dems = this.state.dems
     	.filter(function(element){
     		return element.selected;
@@ -202,6 +216,7 @@ export default class YouthSurvey extends React.Component {
     }
 
     render() {
+    	var isEnabled = this.canBeSubmitted();
 
     	var educationRadio = this.state.education.map(function(e) {
     		return (
@@ -272,24 +287,28 @@ export default class YouthSurvey extends React.Component {
     		<form className="form-horizontal">
     		<fieldset>
     		<legend>Tell Us About Yourself</legend>
+
     		<div className="form-group">
     		<label className="col-md-4 control-label" htmlFor="name">Name</label>
     		<div className="col-md-5">
     		<input onChange={this.onTextInputChanged} value={this.state.name} id="name" name="name" type="text" placeholder="First and Last" className="form-control input-md" required="true" />
     		</div>
     		</div>
+
     		<div className="form-group">
     		<label className="col-md-4 control-label" htmlFor="email">Email</label>
     		<div className="col-md-5">
     		<input onChange={this.onTextInputChanged} value={this.state.email} id="email" name="email" type="email" placeholder="youremail@email.com" className="form-control input-md" required="true" />
     		</div>
     		</div>
+
     		<div className="form-group">
     		<label className="col-md-4 control-label" htmlFor="phone">Phone</label>
     		<div className="col-md-5">
     		<input onChange={this.onTextInputChanged} value={this.state.phone} id="phone" name="phone" type="text" placeholder="(123) 456-7890" className="form-control input-md" required="true" />
     		</div>
     		</div>
+
     		<div className="form-group">
     		<label className="col-md-4 control-label" htmlFor="education">Highest education level</label>
     		<div className="col-md-4">
@@ -315,15 +334,16 @@ export default class YouthSurvey extends React.Component {
     		<label className="col-md-4 control-label" htmlFor="dems">How would you describe yourself? (Check all that apply)</label>
     		<div className="col-md-4">
     		{demsChecks}
+    		</div>
+    		</div>
 
-    		</div>
-    		</div>
     		<div className="form-group">
     		<label className="col-md-4 control-label" htmlFor="background">Tell us about you and your background. This will be shared with your chosen mentor.</label>
     		<div className="col-md-4">
     		<textarea onChange={this.onTextInputChanged} value={this.state.background} className="form-control" id="background" name="background" placeholder="I'm working on graduating from High School..."></textarea>
     		</div>
     		</div>
+
     		<div className="form-group">
     		<label className="col-md-4 control-label" htmlFor="preferences">What would you like to talk to someone about?</label>
     		<div className="col-md-4">
@@ -354,7 +374,7 @@ export default class YouthSurvey extends React.Component {
     		<div className="form-group">
     		<label className="col-md-4 control-label" htmlFor="submit"></label>
     		<div className="col-md-4">
-    		<button  onClick={this.handleFormSubmit} id="submit" name="submit" className="btn btn-primary">Submit</button>
+    		<button disabled={!isEnabled} onClick={this.handleFormSubmit} id="submit" name="submit" className="btn btn-primary">Submit</button>
     		</div>
     		</div>
     		</fieldset>
