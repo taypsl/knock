@@ -32,19 +32,3 @@ document.addEventListener('DOMContentLoaded', () =>
      ReactDOM.render(  <App>asd</App>, document.getElementById('app'))
 );
 
-// layout should render
-	// nav
-	// get advice
-	// meet volunteers
-	// be a volunteer
-
-// meet volunteers should render
-	// 4 volunteer profiles (random)
-	// button to view full volunteers list page
-		// button on click renders all volunteer cards page
-
-// participation buttons should render survey page
-/*
-<Route path="/participate" component={YouthSurvey} />
-			<Route path="/volunteer" component={VolunteerSurvey} />
-          	<Route path="/our-volunteers" component={Volunteers} /> */

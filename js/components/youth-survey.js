@@ -78,6 +78,8 @@ export default class YouthSurvey extends React.Component {
     	this.onEthnicityChange = this.onEthnicityChange.bind(this)
     	this.handleMultipleSelect = this.handleMultipleSelect.bind(this)
     	this.__handleMultipleSelect = this.__handleMultipleSelect.bind(this)
+    	this.handleBlur = this.handleBlur.bind(this)
+    	this.canBeSubmitted = this.canBeSubmitted.bind(this)
     	this.handleFormSubmit = this.handleFormSubmit.bind(this)
     } 
 
@@ -100,10 +102,10 @@ export default class YouthSurvey extends React.Component {
 	}
 
     handleFormSubmit(event) {
-    	if (!this.canBeSubmitted()) {
-		    evt.preventDefault();
-		    return;
-		}
+  //   	if (!this.canBeSubmitted()) {
+		//     evt.preventDefault();
+		//     return;
+		// }
 
     	var dems = this.state.dems
     	.filter(function(element){
