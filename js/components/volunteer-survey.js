@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function validate(name, email, phone, background) {
   return {
     name: name.length === 0,
@@ -36,7 +35,8 @@ export default class VolunteerSurvey extends React.Component {
     		background: '',
     		preferences: '',
             website: '',
-    		mentor: false,
+            title: '',
+    		mentor: true,
     		education: [
     		{ id: 1, name: 'Some high school' },
     		{ id: 2, name: 'High school degree' },
@@ -60,6 +60,7 @@ export default class VolunteerSurvey extends React.Component {
     	this.onEducationChange = this.onEducationChange.bind(this)
     	this.onChildrenChange = this.onChildrenChange.bind(this)
     	this.onEthnicityChange = this.onEthnicityChange.bind(this)
+        this.canBeSubmitted = this.canBeSubmitted.bind(this)
     	this.handleFormSubmit = this.handleFormSubmit.bind(this)
     } 
 
@@ -206,9 +207,9 @@ export default class VolunteerSurvey extends React.Component {
 
     	var educationRadio = this.state.education.map(function(e) {
     		return (
-    			<div className="radio">
+    			<div className="radio" key={e.id.toString()}>
 
-    			<label htmlFor="education-0">
+    			<label htmlFor="education">
     			<input type="radio" checked={e.id===this.state.educationChecked} name="education" value={e.name}  onChange={this.onEducationChange.bind(this, e.id)} />
     			{e.name}
     			</label>
@@ -219,9 +220,9 @@ export default class VolunteerSurvey extends React.Component {
 
     	var demsChecks = this.state.dems.map(function(d) {
     		return (
-    			<div className="checkbox">
-    			<label htmlFor="race-0">
-    			<input checked={d.selected} type="checkbox" name="race" onChange={this.onDemographicChange.bind(this, d.id)} />
+    			<div className="checkbox" key={d.id.toString()}>
+    			<label htmlFor="dems">
+    			<input type="checkbox"  checked={d.selected} name="race" onChange={this.onDemographicChange.bind(this, d.id)} />
     			{d.name}
     			</label>
     			</div>
@@ -230,9 +231,9 @@ export default class VolunteerSurvey extends React.Component {
 
     	var childrenSelect = this.state.children.map(function(c) {
     		return (
-    			<div className ="radio">
-    			<label htmlFor="children-0">
-    			<input  type="radio"  name="children" value={c.name} onChange={this.onChildrenChange.bind(this, c.id)}  />
+    			<div className ="radio" key={c.id.toString()}>
+    			<label htmlFor="children">
+    			<input type="radio" key={c.id.toString()} name="children" value={c.name} onChange={this.onChildrenChange.bind(this, c.id)}  />
     			{c.name}
     			</label>
     			</div>
@@ -241,9 +242,9 @@ export default class VolunteerSurvey extends React.Component {
 
     	var ethnicitySelect = this.state.ethnicity.map(function(e) {
     		return (
-    			<div className ="radio">
+    			<div className ="radio" key={e.id.toString()}>
     			<label htmlFor="ethnicity-0">
-    			<input  type="radio"  name="ethnicity" value={e.name} onChange={this.onEthnicityChange.bind(this, e.id)}  />
+    			<input  type="radio" name="ethnicity" value={e.name} onChange={this.onEthnicityChange.bind(this, e.id)}  />
     			{e.name}
     			</label>
     			</div>
@@ -307,6 +308,13 @@ export default class VolunteerSurvey extends React.Component {
     		</div>
     		</div>
 
+            <div className="form-group">
+            <label className="col-md-4 control-label" htmlFor="title">What is your job title?</label>
+            <div className="col-md-4">
+            <textarea className={shouldMarkError('background') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.title} className="form-control" id="title" name="title" placeholder="Program Director"></textarea>
+            </div>
+            </div>
+
     		<div className="form-group">
     		<label className="col-md-4 control-label" htmlFor="background">Tell us about you and your background. This will be shared on your public profile.</label>
     		<div className="col-md-4">
@@ -324,7 +332,7 @@ export default class VolunteerSurvey extends React.Component {
             <div className="form-group">
             <label className="col-md-4 control-label" htmlFor="preferences">Please include links to your website or online portfolio (optional).</label>
             <div className="col-md-4">
-            <textarea onChange={this.onTextInputChanged} value={this.state.preferences} className="form-control" id="website" name="website" placeholder="https://linkedin.com/my-name" ></textarea>
+            <textarea onChange={this.onTextInputChanged} value={this.state.website} className="form-control" id="website" name="website" placeholder="https://linkedin.com/my-name" ></textarea>
             </div>
             </div>
 

@@ -104,7 +104,7 @@ export default class YouthSurvey extends React.Component {
 		    evt.preventDefault();
 		    return;
 		}
-		
+
     	var dems = this.state.dems
     	.filter(function(element){
     		return element.selected;
@@ -249,7 +249,7 @@ export default class YouthSurvey extends React.Component {
 
     	var educationRadio = this.state.education.map(function(e) {
     		return (
-    			<div className="radio">
+    			<div className="radio" key={e.id.toString()}>
 
     			<label htmlFor="education-0">
     			<input type="radio" checked={e.id===this.state.educationChecked} name="education" value={e.name}  onChange={this.onEducationChange.bind(this, e.id)} />
@@ -262,8 +262,8 @@ export default class YouthSurvey extends React.Component {
 
     	var demsChecks = this.state.dems.map(function(d) {
     		return (
-    			<div className="checkbox">
-    			<label htmlFor="race-0">
+    			<div className="checkbox" key={d.id.toString()}>
+    			<label htmlFor="dems-0">
     			<input checked={d.selected} type="checkbox" name="race" onChange={this.onDemographicChange.bind(this, d.id)} />
     			{d.name}
     			</label>
@@ -273,9 +273,9 @@ export default class YouthSurvey extends React.Component {
 
     	var childrenSelect = this.state.children.map(function(c) {
     		return (
-    			<div className ="radio">
+    			<div className ="radio" key={c.id.toString()}>
     			<label htmlFor="children-0">
-    			<input  type="radio"  name="children" value={c.name} onChange={this.onChildrenChange.bind(this, c.id)}  />
+    			<input  type="radio" name="children" value={c.name} onChange={this.onChildrenChange.bind(this, c.id)}  />
     			{c.name}
     			</label>
     			</div>
@@ -284,9 +284,9 @@ export default class YouthSurvey extends React.Component {
 
     	var ethnicitySelect = this.state.ethnicity.map(function(e) {
     		return (
-    			<div className ="radio">
+    			<div className ="radio" key={e.id.toString()}>
     			<label htmlFor="ethnicity-0">
-    			<input  type="radio"  name="ethnicity" value={e.name} onChange={this.onEthnicityChange.bind(this, e.id)}  />
+    			<input  type="radio" name="ethnicity" value={e.name} onChange={this.onEthnicityChange.bind(this, e.id)}  />
     			{e.name}
     			</label>
     			</div>
@@ -295,7 +295,7 @@ export default class YouthSurvey extends React.Component {
 
     	var weekdayMultipleSelect = this.state.dayHours.map(function(wd) {
     		return (
-    			<option value={wd.name}>
+    			<option key={wd.id.toString()} value={wd.name}>
     			{wd.name}
     			</option>
     			);
@@ -303,7 +303,7 @@ export default class YouthSurvey extends React.Component {
 
     	var weekendMultipleSelect = this.state.dayHours.map(function(we) {
     		return (
-    			<option value={we.name}>
+    			<option key={we.id.toString()} value={we.name}>
     			{we.name}
     			</option>
     			);
