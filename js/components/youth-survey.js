@@ -96,7 +96,7 @@ export default class YouthSurvey extends React.Component {
 	}
 
     canBeSubmitted() {
-		const errors = validate(this.state.name, this.state.email, this.state.phone, this.state.background);
+		const valErrors = validate(this.state.name, this.state.email, this.state.phone, this.state.background);
 	    const isDisabled = Object.keys(valErrors).some(x => valErrors[x]);
 	    return !isDisabled;
 	}
@@ -127,7 +127,7 @@ export default class YouthSurvey extends React.Component {
     	})
     	.map(function(element){return element.name + '' + element.text})
 
-    	event.preventDefault();
+		event.preventDefault();
     	fetch('https://important-scraper.glitch.me/users', {  
     		method: 'POST',
     		headers: {
@@ -156,6 +156,7 @@ export default class YouthSurvey extends React.Component {
     	.catch((error) => {
     		console.error(error);
     	});
+    	
     }
 
     onDemographicChange(id) {
@@ -415,3 +416,36 @@ export default class YouthSurvey extends React.Component {
 	}
 }
 
+
+
+/* 
+    	event.preventDefault();
+    	fetch('https://important-scraper.glitch.me/users', {  
+    		method: 'POST',
+    		headers: {
+    			'Accept': 'application/json',
+    			'Content-Type': 'application/json',
+    		},
+    		body: JSON.stringify({
+    			name: this.state.name,
+    			email: this.state.email,
+    			phone: this.state.phone,
+    			education: this.state.education[this.state.educationChecked].name,
+    			weekendTime: this.state.selectedWeekendTime,
+    			weekdayTime: this.state.selectedWeekdayTime,
+    			children: children,
+    			ethnicity: ethnicity,
+    			dems: dems,
+    			background: this.state.background,
+    			preferences: this.state.preferences,
+    			mentor: false
+    		})
+    	})
+    	.then( res => res.text())
+    	.then( data => {
+    		console.log("submit_response", data)
+    	})
+    	.catch((error) => {
+    		console.error(error);
+    	});
+*/

@@ -80,7 +80,7 @@ export default class YouthSurvey extends React.Component {
     }
 
     canBeSubmitted() {
-        const errors = validate(this.state.name, this.state.email, this.state.phone, this.state.background);
+        const valErrors = validate(this.state.name, this.state.email, this.state.phone, this.state.background);
         const isDisabled = Object.keys(valErrors).some(x => valErrors[x]);
         return !isDisabled;
     }
@@ -280,7 +280,7 @@ export default class YouthSurvey extends React.Component {
             </div>
 
             <div className="grp title-grp">
-            <label className="form-label" htmlFor="title">What is your job title?</label>
+            <label className="form-label" htmlFor="title">What is your job title?*</label>
             <div>
             <textarea className={shouldMarkError('background') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.title} id="title" name="title" placeholder="Program Director"></textarea>
             </div>
