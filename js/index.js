@@ -11,10 +11,11 @@ import Volunteers from './components/volunteers';
 import YouthSurvey from './components/youth-survey';
 
 
+
 class App extends React.Component {
   render() {
     return (
-    	<Router history={hashHistory}>
+    	<Router history={hashHistory} >
         <Route path="/" component={Layout}>
         	<IndexRoute component={Home} />
         	<Route path="our-volunteers" component={Volunteers} />
@@ -32,3 +33,20 @@ document.addEventListener('DOMContentLoaded', () =>
      ReactDOM.render(  <App>asd</App>, document.getElementById('app'))
 );
 
+/* function hashLinkScroll() {
+  const { hash } = window.location;
+  if (hash !== '') {
+    // Push onto callback queue so it runs after the DOM is updated,
+    // this is required when navigating from a different page so that
+    // the element is rendered on the page before trying to getElementById.
+    setTimeout(() => {
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) element.scrollIntoView();
+    }, 0);
+  }
+} 
+
+<Router history={browserHistory} onUpdate={hashLinkScroll}>
+
+*/

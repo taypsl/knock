@@ -10,11 +10,15 @@ export default class Navbar extends React.Component {
 		return (
 			<div className="header">
 				<h1 className="brand"><Link to={"/"}>KNOCK</Link></h1>
-				<nav id="dropdown">
-					<li className="links"><Link to={"/#link1"}>HOW IT WORKS</Link></li>
-					<li className="links"><Link to={"/#link2"}>MEET A MENTOR</Link></li>
-					<li className="links"><Link to={"/#link3"}>GET INVOLVED</Link></li>
-				</nav>
+				<input id="menu-toggle" type="checkbox" />
+				<label className='menu-button-container' htmlFor="menu-toggle">
+					<div className='menu-button'></div>
+  				</label>
+				<ul id="dropdown" className="dropdown">
+					<li className="links"><Link to={"/#howitworks"}>HOW IT WORKS</Link></li>
+					<li className="links"><Link to={"/#meetamentor"}>MEET A MENTOR</Link></li>
+					<li className="links"><Link to={"/#getinvolved"}>GET INVOLVED</Link></li>
+				</ul>
 			</div>
 		)
 	}
