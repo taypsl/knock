@@ -102,10 +102,10 @@ export default class YouthSurvey extends React.Component {
 	}
 
     handleFormSubmit(event) {
-  //   	if (!this.canBeSubmitted()) {
-		//     evt.preventDefault();
-		//     return;
-		// }
+    	if (!this.canBeSubmitted()) {
+		    evt.preventDefault();
+		    return;
+		}
 
     	var dems = this.state.dems
     	.filter(function(element){
@@ -253,7 +253,7 @@ export default class YouthSurvey extends React.Component {
     		return (
     			<div className="radio" key={e.id.toString()}>
 
-    			<input type="radio" checked={e.id===this.state.educationChecked} name="education" value={e.name}  onChange={this.onEducationChange.bind(this, e.id)} />
+    			<input className="form-input" type="radio" checked={e.id===this.state.educationChecked} name="education" value={e.name}  onChange={this.onEducationChange.bind(this, e.id)} />
     			<div htmlFor={e.id} className="input-value">{e.name}</div>
 
     			</div>
@@ -263,7 +263,7 @@ export default class YouthSurvey extends React.Component {
     	var demsChecks = this.state.dems.map(function(d) {
     		return (
     			<div className="checkbox" key={d.id.toString()}>
-    			<input checked={d.selected} type="checkbox" name="race" onChange={this.onDemographicChange.bind(this, d.id)} />
+    			<input className="form-input" checked={d.selected} type="checkbox" name="race" onChange={this.onDemographicChange.bind(this, d.id)} />
     			<div htmlFor={d.id} className="input-value">{d.name}</div>
     			</div>
     			);
@@ -273,7 +273,7 @@ export default class YouthSurvey extends React.Component {
     		return (
     			<div className="radio" key={c.id.toString()}>
     			
-    			<input type="radio" name="children" value={c.name} onChange={this.onChildrenChange.bind(this, c.id)}  />
+    			<input className="form-input" type="radio" name="children" value={c.name} onChange={this.onChildrenChange.bind(this, c.id)}  />
     			<div htmlFor={c.id} className="input-value">{c.name}</div>
     			
     			</div>
@@ -283,7 +283,7 @@ export default class YouthSurvey extends React.Component {
     	var ethnicitySelect = this.state.ethnicity.map(function(e) {
     		return (
     			<div className="radio" key={e.id.toString()}>
-    			<input type="radio" name="ethnicity" value={e.name} onChange={this.onEthnicityChange.bind(this, e.id)}  />
+    			<input className="form-input" type="radio" name="ethnicity" value={e.name} onChange={this.onEthnicityChange.bind(this, e.id)}  />
     			<div htmlFor={e.id} className="input-value">{e.name}</div>
     			</div>
     			);
@@ -314,42 +314,42 @@ export default class YouthSurvey extends React.Component {
     		<h2 className="section-header">tell us about <span className="red-inline">you</span>rself</h2>
 
     		<div className="grp name-grp">
-    		<label htmlFor="name">Name*</label>
+    		<label className="form-label" htmlFor="name">Name*</label>
     		<div>
-    		<input className={shouldMarkError('name') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.name} id="name" name="name" type="text" placeholder="First and Last" required="true" />
+    			<input className={shouldMarkError('name') ? "val-error" : ""} onChange={this.onTextInputChanged} className="form-input" value={this.state.name} id="name" name="name" type="text" placeholder="First and Last" required="true" />
     		</div>
     		</div>
 
     		<div className="grp email-grp">
-    		<label htmlFor="email">Email*</label>
+    		<label className="form-label" htmlFor="email">Email*</label>
     		<div>
-    		<input className={shouldMarkError('email') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.email} id="email" name="email" type="email" placeholder="youremail@email.com" required="true" />
+    		<input className={shouldMarkError('email') ? "val-error" : ""} onChange={this.onTextInputChanged} className="form-input" value={this.state.email} id="email" name="email" type="email" placeholder="youremail@email.com" required="true" />
     		</div>
     		</div>
 
     		<div className="grp phone-grp">
-    		<label htmlFor="phone">Phone*</label>
+    		<label className="form-label" htmlFor="phone">Phone*</label>
     		<div>
-    		<input className={shouldMarkError('phone') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.phone} id="phone" name="phone" type="text" placeholder="(123) 456-7890" required="true" />
+    		<input className={shouldMarkError('phone') ? "val-error" : ""} onChange={this.onTextInputChanged} className="form-input" value={this.state.phone} id="phone" name="phone" type="text" placeholder="(123) 456-7890" required="true" />
     		</div>
     		</div>
 			
 			<div className="grp background-grp">
-    		<label htmlFor="background">Tell us about you and your background. This will be shared with your chosen mentor.*</label>
+    		<label className="form-label" htmlFor="background">Tell us about you and your background. This will be shared with your chosen mentor.*</label>
     		<div>
     		<textarea className={shouldMarkError('background') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.background} id="background" name="background" placeholder="I'm working on graduating from High School..."></textarea>
     		</div>
     		</div>
 
     		<div className="grp preferences-grp">
-    		<label htmlFor="preferences">What would you like to talk to someone about?*</label>
+    		<label className="form-label" htmlFor="preferences">What would you like to talk to someone about?*</label>
     		<div>
     		<textarea onChange={this.onTextInputChanged} value={this.state.preferences} id="preferences" name="preferences" placeholder="Getting into college, working in the field of ___, raising kids while starting a career…" ></textarea>
     		</div>
     		</div>
 
     		<div className="grp weekend-grp">
-    		<label>Select the WEEKEND times you can talk (PST)*</label>
+    		<label className="form-label">Select the WEEKEND times you can talk (PST)*</label>
     		<div>
     		<select id="weekendTime" name="weekendTime" onChange={this.__handleMultipleSelect} multiple="multiple">
     		{weekendMultipleSelect}
@@ -359,18 +359,12 @@ export default class YouthSurvey extends React.Component {
     		</div>
 
     		<div className="grp weekday-grp">
-    		<label htmlFor="selectmultiple">Select the WEEKDAY times you can talk (PST)*</label>
+    		<label className="form-label" htmlFor="selectmultiple">Select the WEEKDAY times you can talk (PST)*</label>
     		<div>
     		<select id="weekdayTime" name="weekdayTime"  onChange={this.handleMultipleSelect} multiple="multiple">
     		{weekdayMultipleSelect}
     		</select>
     		<div className="note"><strong>Note:</strong> hold down the ctrl/cmd button to select multiple times.</div>
-    		</div>
-    		</div>
-    		<div className="grp education-grp">
-    		<label htmlFor="education">Highest education level</label>
-    		<div>
-    		{educationRadio}
     		</div>
     		</div>
 
@@ -379,31 +373,36 @@ export default class YouthSurvey extends React.Component {
     		<h4>The following demographic questions are optional.</h4>
     		</div>
 
+    		<div className="grp education-grp">
+    		<label className="form-label" htmlFor="education">Highest education level</label>
+    		<div>
+    		{educationRadio}
+    		</div>
+    		</div>
+
     		<div className="grp children-grp">
-    		<label htmlFor="children">Do you have children?</label>
+    		<label className="form-label" htmlFor="children">Do you have children?</label>
     		<div>
     		{childrenSelect}
     		</div>
     		</div>
 
     		<div className="grp ethnicity-grp">
-    		<label htmlFor="ethnicity">Are you of Hispanic, Latino, or Spanish origin?</label>
+    		<label className="form-label" htmlFor="ethnicity">Are you of Hispanic, Latino, or Spanish origin?</label>
     		<div>
     		{ethnicitySelect}
     		</div>
     		</div>
 
     		<div className="grp dem-grp">
-    		<label htmlFor="dems">How would you describe yourself? (Check all that apply)</label>
+    		<label className="form-label" htmlFor="dems">How would you describe yourself? (Check all that apply)</label>
     		<div>
     		{demsChecks}
     		</div>
     		</div>
 
-    		
-
     		<div className="grp submit-grp">
-    		<label htmlFor="submit"></label>
+    		<label className="form-label" htmlFor="submit"></label>
     		<div>
     		<button disabled={isDisabled} onClick={this.handleFormSubmit} id="submit" name="submit" className="btn-submit">Submit</button>
     		</div>
@@ -412,7 +411,7 @@ export default class YouthSurvey extends React.Component {
     		</form>
     		</section>
     		</div>
-    		)
-}
+    	)
+	}
 }
 

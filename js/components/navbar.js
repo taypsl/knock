@@ -7,17 +7,18 @@ import { Link } from 'react-router';
 export default class Navbar extends React.Component {
 	render() {
 		return (
-			<div className="header">
-				<h1 className="brand"><Link to={"/"}>KNOCK</Link></h1>
-				<input id="menu-toggle" type="checkbox" />
-				<label className="menu-button-container" htmlFor="menu-toggle">
-					<div className="menu-button"></div>
-  				</label>
-				<ul className="menu">
-					<li className="links"><Link to={"/#howitworks"}>HOW IT WORKS</Link></li>
+			<div className="top-nav">
+				<div className="brand"><Link to={"/"}>KNOCK</Link></div>
+			    <input className="menu-toggle" id="menu-toggle" type="checkbox" />
+			    <label className='menu-button-container' htmlFor="menu-toggle">
+			    	<div className='menu-button'></div>
+			    </label>
+			    <ul className="menu">
+		      		<li className="links"><Link to={"/#howitworks"}>HOW IT WORKS</Link></li>
 					<li className="links"><Link to={"/#meetamentor"}>MEET A MENTOR</Link></li>
 					<li className="links"><Link to={"/#getinvolved"}>GET INVOLVED</Link></li>
-				</ul>
+			    </ul>
+			    
 			</div>
 		)
 	}

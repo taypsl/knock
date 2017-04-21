@@ -7,7 +7,7 @@ function validate(name, email, phone, background) {
     email: email.length === 0,
     phone: phone.length === 0,
     background: background.length === 0,
-  };
+};
 }
 
 // giant form component. yikes.
@@ -75,7 +75,7 @@ export default class YouthSurvey extends React.Component {
 
     handleBlur = (field) => (evt) => {
         this.setState({
-        touched: { ...this.state.touched, [field]: true },
+            touched: { ...this.state.touched, [field]: true },
         });
     }
 
@@ -86,10 +86,10 @@ export default class YouthSurvey extends React.Component {
     }
 
     handleFormSubmit(event) {
-  //    if (!this.canBeSubmitted()) {
-        //     evt.preventDefault();
-        //     return;
-        // }
+     if (!this.canBeSubmitted()) {
+            evt.preventDefault();
+            return;
+        }
 
         var dems = this.state.dems
         .filter(function(element){
@@ -135,7 +135,8 @@ export default class YouthSurvey extends React.Component {
         })
         .then( res => res.text())
         .then( data => {
-            console.log("submit_response", data)
+            console.log("submit_response", data);
+            alert("Success!");
         })
         .catch((error) => {
             console.error(error);
@@ -196,7 +197,6 @@ export default class YouthSurvey extends React.Component {
             ethnicity: stateEthnicity
         })
     }
-
     
 
     render() {
@@ -204,20 +204,18 @@ export default class YouthSurvey extends React.Component {
         const isDisabled = Object.keys(valErrors).some(x => valErrors[x]);
 
         const shouldMarkError = (field) => {
-        const hasError = valErrors[field];
-        const shouldShow = this.state.touched[field];
+            const hasError = valErrors[field];
+            const shouldShow = this.state.touched[field];
 
-        return hasError ? shouldShow : false;
+            return hasError ? shouldShow : false;
         };
 
         var educationRadio = this.state.education.map(function(e) {
             return (
                 <div className="radio" key={e.id.toString()}>
 
-                <label htmlFor="education-0">
-                <input type="radio" checked={e.id===this.state.educationChecked} name="education" value={e.name}  onChange={this.onEducationChange.bind(this, e.id)} />
-                {e.name}
-                </label>
+                <input className="form-input" type="radio" checked={e.id===this.state.educationChecked} name="education" value={e.name}  onChange={this.onEducationChange.bind(this, e.id)} />
+                <div htmlFor={e.id} className="input-value">{e.name}</div>
 
                 </div>
                 );
@@ -226,126 +224,126 @@ export default class YouthSurvey extends React.Component {
         var demsChecks = this.state.dems.map(function(d) {
             return (
                 <div className="checkbox" key={d.id.toString()}>
-                <label htmlFor="dems-0">
-                <input checked={d.selected} type="checkbox" name="race" onChange={this.onDemographicChange.bind(this, d.id)} />
-                {d.name}
-                </label>
+                <input className="form-input" checked={d.selected} type="checkbox" name="race" onChange={this.onDemographicChange.bind(this, d.id)} />
+                <div htmlFor={d.id} className="input-value">{d.name}</div>
                 </div>
                 );
         }.bind(this));
 
         var childrenSelect = this.state.children.map(function(c) {
             return (
-                <div className ="radio" key={c.id.toString()}>
-                <label htmlFor="children-0">
-                <input  type="radio" name="children" value={c.name} onChange={this.onChildrenChange.bind(this, c.id)}  />
-                {c.name}
-                </label>
+                <div className="radio" key={c.id.toString()}>
+                
+                <input className="form-input" type="radio" name="children" value={c.name} onChange={this.onChildrenChange.bind(this, c.id)}  />
+                <div htmlFor={c.id} className="input-value">{c.name}</div>
+                
                 </div>
                 );
         }.bind(this));
 
         var ethnicitySelect = this.state.ethnicity.map(function(e) {
             return (
-                <div className ="radio" key={e.id.toString()}>
-                <label htmlFor="ethnicity-0">
-                <input  type="radio" name="ethnicity" value={e.name} onChange={this.onEthnicityChange.bind(this, e.id)}  />
-                {e.name}
-                </label>
+                <div className="radio" key={e.id.toString()}>
+                <input className="form-input" type="radio" name="ethnicity" value={e.name} onChange={this.onEthnicityChange.bind(this, e.id)}  />
+                <div htmlFor={e.id} className="input-value">{e.name}</div>
                 </div>
                 );
         }.bind(this));
 
-
         return (
 
             <div>
-            <section>
-            <form className="form-horizontal">
+            <section className="form-background">
+            <form>
             <fieldset>
-            <legend>Tell Us About Yourself</legend>
+            <h2 className="section-header">vol<span className="red-inline">u</span>nteer sign up</h2>
 
-            <div className="form-group">
-            <label className="col-md-4 control-label" htmlFor="name">Name</label>
-            <div className="col-md-5">
-            <input className={shouldMarkError('name') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.name} id="name" name="name" type="text" placeholder="First and Last" className="form-control input-md" required="true" />
-            </div>
-            </div>
-
-            <div className="form-group">
-            <label className="col-md-4 control-label" htmlFor="email">Email</label>
-            <div className="col-md-5">
-            <input className={shouldMarkError('email') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.email} id="email" name="email" type="email" placeholder="youremail@email.com" className="form-control input-md" required="true" />
+            <div className="grp name-grp">
+            <label className="form-label" htmlFor="name">Name*</label>
+            <div>
+            <input className={shouldMarkError('name') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.name} className="form-input" id="name" name="name" type="text" placeholder="First and Last" required="true" />
             </div>
             </div>
 
-            <div className="form-group">
-            <label className="col-md-4 control-label" htmlFor="phone">Phone</label>
-            <div className="col-md-5">
-            <input className={shouldMarkError('phone') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.phone} id="phone" name="phone" type="text" placeholder="(123) 456-7890" className="form-control input-md" required="true" />
+            <div className="grp email-grp">
+            <label className="form-label" htmlFor="email">Email*</label>
+            <div>
+            <input className="form-input" className={shouldMarkError('email') ? "val-error" : ""} onChange={this.onTextInputChanged} className="form-input" value={this.state.email} id="email" name="email" type="email" placeholder="youremail@email.com" required="true" />
             </div>
             </div>
 
-            <div className="form-group">
-            <label className="col-md-4 control-label" htmlFor="education">Highest education level</label>
-            <div className="col-md-4">
+            <div className="grp phone-grp">
+            <label className="form-label" htmlFor="phone">Phone*</label>
+            <div>
+            <input className="form-input" className={shouldMarkError('phone') ? "val-error" : ""} onChange={this.onTextInputChanged} className="form-input" value={this.state.phone} id="phone" name="phone" type="text" placeholder="(123) 456-7890" required="true" />
+            </div>
+            </div>
+
+            <div className="grp title-grp">
+            <label className="form-label" htmlFor="title">What is your job title?</label>
+            <div>
+            <textarea className={shouldMarkError('background') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.title} id="title" name="title" placeholder="Program Director"></textarea>
+            </div>
+            </div>
+
+            <div className="grp background-grp">
+            <label className="form-label" htmlFor="background">Tell us about you and your background. This will be shared on your public profile.*</label>
+            <div>
+            <textarea className={shouldMarkError('background') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.background} id="background" name="background" placeholder="I'm a Program Director and first generation college graduate..."></textarea>
+            </div>
+            </div>
+
+            <div className="grp preferences-grp">
+            <label className="form-label" htmlFor="preferences">What would you like to talk to someone about?*</label>
+            <div>
+            <textarea onChange={this.onTextInputChanged} value={this.state.preferences} id="preferences" name="preferences" placeholder="Getting into college, working in my field of ___, raising kids while starting a career…" ></textarea>
+            </div>
+            </div>
+
+            <div className="grp website-grp">
+            <label className="form-label" htmlFor="preferences">Please include links to your website or online portfolio (optional).</label>
+            <div>
+            <textarea onChange={this.onTextInputChanged} value={this.state.website} id="website" name="website" placeholder="https://linkedin.com/my-name" ></textarea>
+            </div>
+            </div>
+
+            <div className="grp optional-grp">
+            <hr />
+            <h4>The following demographic questions are optional.</h4>
+            </div>
+
+            <div className="grp education-grp">
+            <label className="form-label" htmlFor="education">Highest education level</label>
+            <div>
             {educationRadio}
             </div>
             </div>
 
-            <div className="form-group">
-            <label className="col-md-4 control-label" htmlFor="children">Do you have children?</label>
-            <div className="col-md-4">
+            <div className="grp children-grp">
+            <label className="form-label" htmlFor="children">Do you have children?</label>
+            <div>
             {childrenSelect}
             </div>
             </div>
 
-            <div className="form-group">
-            <label className="col-md-4 control-label" htmlFor="ethnicity">Are you of Hispanic, Latino, or Spanish origin?</label>
-            <div className="col-md-4">
+            <div className="grp ethnicity-grp">
+            <label className="form-label" htmlFor="ethnicity">Are you of Hispanic, Latino, or Spanish origin?</label>
+            <div>
             {ethnicitySelect}
             </div>
             </div>
 
-            <div className="form-group">
-            <label className="col-md-4 control-label" htmlFor="dems">How would you describe yourself? (Check all that apply)</label>
-            <div className="col-md-4">
+            <div className="grp dem-grp">
+            <label className="form-label" htmlFor="dems">How would you describe yourself? (Check all that apply)</label>
+            <div>
             {demsChecks}
             </div>
             </div>
 
-            <div className="form-group">
-            <label className="col-md-4 control-label" htmlFor="title">What is your job title?</label>
-            <div className="col-md-4">
-            <textarea className={shouldMarkError('background') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.title} className="form-control" id="title" name="title" placeholder="Program Director"></textarea>
-            </div>
-            </div>
-
-            <div className="form-group">
-            <label className="col-md-4 control-label" htmlFor="background">Tell us about you and your background. This will be shared on your public profile.</label>
-            <div className="col-md-4">
-            <textarea className={shouldMarkError('background') ? "val-error" : ""} onChange={this.onTextInputChanged} value={this.state.background} className="form-control" id="background" name="background" placeholder="I'm a Program Director and first generation college graduate..."></textarea>
-            </div>
-            </div>
-
-            <div className="form-group">
-            <label className="col-md-4 control-label" htmlFor="preferences">What would you like to talk to someone about?</label>
-            <div className="col-md-4">
-            <textarea onChange={this.onTextInputChanged} value={this.state.preferences} className="form-control" id="preferences" name="preferences" placeholder="Getting into college, working in my field of ___, raising kids while starting a career…" ></textarea>
-            </div>
-            </div>
-
-            <div className="form-group">
-            <label className="col-md-4 control-label" htmlFor="preferences">Please include links to your website or online portfolio (optional).</label>
-            <div className="col-md-4">
-            <textarea onChange={this.onTextInputChanged} value={this.state.website} className="form-control" id="website" name="website" placeholder="https://linkedin.com/my-name" ></textarea>
-            </div>
-            </div>
-
-            <div className="form-group">
-            <label className="col-md-4 control-label" htmlFor="submit"></label>
-            <div className="col-md-4">
-            <button disabled={isDisabled} onClick={this.handleFormSubmit} id="submit" name="submit" className="btn btn-primary">Submit</button>
+            <div className="grp submit-grp">
+            <label className="form-label" htmlFor="submit"></label>
+            <div>
+            <button disabled={isDisabled} onClick={this.handleFormSubmit} id="submit" name="submit" className="btn-submit">Submit</button>
             </div>
             </div>
             </fieldset>
@@ -358,15 +356,3 @@ export default class YouthSurvey extends React.Component {
 
 
 
-
-/*
-
-
-
-
-
-
-
-
-
-  */
