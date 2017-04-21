@@ -375,7 +375,8 @@ export default class YouthSurvey extends React.Component {
     		</div>
 
     		<div className="grp optional-grp">
-    		<h2>The following demographic questions are optional.</h2>
+    		<hr />
+    		<h4>The following demographic questions are optional.</h4>
     		</div>
 
     		<div className="grp children-grp">

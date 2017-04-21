@@ -498,6 +498,10 @@ textarea:focus {
 	width: 150px;
 }
 
+hr {
+	border: 1px dashed black;
+}
+
 /* ====== footer ====== */
 footer {
 	background: #272F30;

@@ -13,7 +13,7 @@ export default class Navbar extends React.Component {
 				<label className="menu-button-container" htmlFor="menu-toggle">
 					<div className="menu-button"></div>
   				</label>
-				<ul id="dropdown" className="menu">
+				<ul className="menu">
 					<li className="links"><Link to={"/#howitworks"}>HOW IT WORKS</Link></li>
 					<li className="links"><Link to={"/#meetamentor"}>MEET A MENTOR</Link></li>
 					<li className="links"><Link to={"/#getinvolved"}>GET INVOLVED</Link></li>
