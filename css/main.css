@@ -71,7 +71,7 @@ video.fill {
 .top-nav {
   box-sizing: border-box;
   position: fixed;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -224,11 +224,11 @@ div.volunteers {
 
 div.volunteers:before {
 	border-bottom: 35px solid #63B1F8;
-  	border-left: 850px solid #272F30;
-  	border-right: 750px solid #272F30;
+  	border-left: 700px solid #272F30;
+  	border-right: 800px solid #272F30;
   	content: "";
   	left: 0;
-  	position: absolute;
+  	position: relative;
   	top: -20px;
   	width: 0;
 }
