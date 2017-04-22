@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 export default class HowItWorks extends React.Component {
 	render() {
 		return (
-			<div className="how-it-works" id="link1">
+			<div className="how-it-works" id="howitworks">
 				<div className="grey-bar"></div>
 				<section>
 					<h2 className="section-header">how it works</h2>
@@ -36,7 +36,7 @@ export default class HowItWorks extends React.Component {
 								<img src="../assets/images/icn_list3@2x.png" />
 							</div>
 							<div className="col-sm-10">
-								<p className="list-text">Check out some of our volunteers below, and fill out a short questionaire to get started.</p>
+								<p className="list-text">Check out some of our volunteers below, and fill out a short questionnaire to get started.</p>
 							</div>
 						</div>
 					</div>

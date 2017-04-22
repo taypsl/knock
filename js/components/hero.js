@@ -9,7 +9,7 @@ export default class Hero extends React.Component {
 				    <source src="../assets/knock-test2-low-540.mp4" type="video/mp4" />
 			    	Sorry, your browser does not support HTML5 video.
 				</video>
-				<Link to={'/#link1'}><div className="knock-icon">knock<div className="down-icon"></div></div></Link>
+				<Link to={'/#howitworks'}><div className="knock-icon">knock<div className="down-icon"></div></div></Link>
 			</div>
 		)
 	}

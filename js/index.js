@@ -10,30 +10,7 @@ import VolunteerSurvey from './components/volunteer-survey';
 import Volunteers from './components/volunteers';
 import YouthSurvey from './components/youth-survey';
 
-
-
-class App extends React.Component {
-  render() {
-    return (
-    	<Router history={hashHistory} >
-        <Route path="/" component={Layout}>
-        	<IndexRoute component={Home} />
-        	<Route path="our-volunteers" component={Volunteers} />
-        	<Route path="volunteer" component={VolunteerSurvey} />
-        	<Route path="participate" component={YouthSurvey} />
-        </Route>
-      </Router>
-   
-    )
-  }
-}
-
-
-document.addEventListener('DOMContentLoaded', () =>
-     ReactDOM.render(  <App>asd</App>, document.getElementById('app'))
-);
-
-/* function hashLinkScroll() {
+function hashLinkScroll() {
   const { hash } = window.location;
   if (hash !== '') {
     // Push onto callback queue so it runs after the DOM is updated,
@@ -47,6 +24,22 @@ document.addEventListener('DOMContentLoaded', () =>
   }
 } 
 
-<Router history={browserHistory} onUpdate={hashLinkScroll}>
+class App extends React.Component {
+  render() {
+    return (
+    	<Router history={browserHistory} onUpdate={hashLinkScroll}>
+        <Route path="/" component={Layout}>
+        	<IndexRoute component={Home} />
+        	<Route path="our-volunteers" component={Volunteers} />
+        	<Route path="volunteer" component={VolunteerSurvey} />
+        	<Route path="participate" component={YouthSurvey} />
+        </Route>
+      </Router>
+   
+    )
+  }
+}
 
-*/
+document.addEventListener('DOMContentLoaded', () =>
+     ReactDOM.render(  <App>asd</App>, document.getElementById('app'))
+);

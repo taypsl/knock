@@ -18,7 +18,7 @@ export default class Volunteers extends React.Component {
 	}
 
 	componentDidMount() {
-		return fetch('https://important-scraper.glitch.me/users')
+		return fetch('https://knockserver.glitch.me//users')
 		.then((response) => response.json())
 		.then((responseJson) => {
 			this.setState({volunteers: responseJson});
@@ -43,14 +43,14 @@ export default class Volunteers extends React.Component {
 		.map(function(volunteer) {
 			return (
 				<div className="profile"  key={volunteer.id}>
-					<h4 className="name"><a href={volunteer.website}>{volunteer.username}</a></h4>
+					<h4 className="name"><a href={volunteer.website} target="_blank">{volunteer.name}</a></h4>
 					<p className="title">{volunteer.title}</p>
 					<p className="background">{volunteer.background}</p>
 				</div>
 			)
 		})
 		return (
-				<div className="volunteers" id="link2">
+				<div className="volunteers" id="meetamentor">
 					<section>
 						<h2 className="section-header">meet our volunteers</h2>
 						<p>Learn about real careers from real people.</p>
@@ -64,16 +64,3 @@ export default class Volunteers extends React.Component {
 		)	
 	}
 }
-
-
-
-
-
-
-
-
-
-// actually only want the section/div stuff to happen on main page, not on full volunteer page. will need to work out. 
-
-
-

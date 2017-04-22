@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 export default class GetInvolved extends React.Component {
 	render() {
 		return (
-			<div className="get-involved" id="link3">
+			<div className="get-involved" id="getinvolved">
 				<div className="grey-bar-2"></div>
 				<section>
 					<h2 className="section-header">get involved</h2>

@@ -151,7 +151,8 @@ export default class YouthSurvey extends React.Component {
     	})
     	.then( res => res.text())
     	.then( data => {
-    		console.log("submit_response", data)
+    		console.log("submit_response", data);
+            alert("Your form has been submitted successfully!");
     	})
     	.catch((error) => {
     		console.error(error);
