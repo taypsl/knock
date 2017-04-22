@@ -1,4 +1,5 @@
 import React from 'react';
+import Volunteers from './volunteers';
 
 
 function validate(name, email, phone, background) {
@@ -403,6 +404,14 @@ export default class YouthSurvey extends React.Component {
     		</div>
     		</div>
 
+            <div className="grp selection-grp">
+            <hr />
+            <h4>Choose up to three volunteers you would like to talk to.</h4>
+            </div>
+
+
+            <Volunteers />
+
     		<div className="grp submit-grp">
     		<label className="form-label" htmlFor="submit"></label>
     		<div>
@@ -417,36 +426,3 @@ export default class YouthSurvey extends React.Component {
 	}
 }
 
-
-
-/* 
-    	event.preventDefault();
-    	fetch('https://important-scraper.glitch.me/users', {  
-    		method: 'POST',
-    		headers: {
-    			'Accept': 'application/json',
-    			'Content-Type': 'application/json',
-    		},
-    		body: JSON.stringify({
-    			name: this.state.name,
-    			email: this.state.email,
-    			phone: this.state.phone,
-    			education: this.state.education[this.state.educationChecked].name,
-    			weekendTime: this.state.selectedWeekendTime,
-    			weekdayTime: this.state.selectedWeekdayTime,
-    			children: children,
-    			ethnicity: ethnicity,
-    			dems: dems,
-    			background: this.state.background,
-    			preferences: this.state.preferences,
-    			mentor: false
-    		})
-    	})
-    	.then( res => res.text())
-    	.then( data => {
-    		console.log("submit_response", data)
-    	})
-    	.catch((error) => {
-    		console.error(error);
-    	});
-*/

@@ -50,7 +50,15 @@ export default class Volunteers extends React.Component {
 			)
 		})
 		return (
-				<div className="volunteers" id="meetamentor">
+			<div className="profile-container">
+				{volunteers}
+			</div>
+		)	
+	}
+}
+
+/* 
+<div className="volunteers" id="meetamentor">
 					<section>
 						<h2 className="section-header">meet our volunteers</h2>
 						<p>Learn about real careers from real people.</p>
@@ -61,6 +69,5 @@ export default class Volunteers extends React.Component {
 					</section>
 					<div className="grey-bar"></div>
 				</div>
-		)	
-	}
-}
+
+				*/
